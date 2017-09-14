@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -66,7 +65,6 @@ public class StatusBarManager {
        }
 
 
-       Log.e(TAG, "setTranStatusBar: "+systemVersion );
 
    }
 

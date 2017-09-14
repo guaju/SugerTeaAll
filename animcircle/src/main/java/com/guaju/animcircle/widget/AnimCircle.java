@@ -10,7 +10,6 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.text.TextPaint;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 import com.guaju.animcircle.R;
@@ -107,7 +106,6 @@ public class AnimCircle extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         init();
-        Log.e(TAG, "onDraw: " );
         //画东西就可以了
         /**
          * 参数1：x轴圆心坐标

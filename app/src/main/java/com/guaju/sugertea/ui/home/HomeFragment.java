@@ -25,6 +25,7 @@ import com.guaju.sugertea.model.bean.ADBean;
 import com.guaju.sugertea.model.bean.HomeShopListBean;
 import com.guaju.sugertea.model.bean.TuijianShopBean;
 import com.guaju.sugertea.ui.main.MainActivity;
+import com.guaju.sugertea.utils.MeasureUtils;
 import com.guaju.sugertea.widget.CustomScrollView;
 
 import java.util.ArrayList;
@@ -65,6 +66,10 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView 
     int scrolllefttop[] = new int[2];
     //定义变量 检查scrollview是否处于停止状态
     float touchY = 0;
+    int page=1;
+    String paixu="0";//0表示默认排序
+    //装载总共recyclerview的数组
+    ArrayList<HomeShopListBean.ListBean> totalLists=new ArrayList<>();
 
 
     //为滚动的操作添加handler
@@ -72,7 +77,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView 
         @Override
         public void handleMessage(Message msg) {
             if (SCROLLTAG == msg.what) {
-                    Log.e(TAG, "handleMessage: touchy"+touchY+"--scrolly"+ptrsv.getScrollY());
                 if (touchY!=ptrsv.getScrollY()){
                     //说明惯性事件发生，手指猛滑会发生
                    return;
@@ -116,6 +120,8 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView 
     private View fragment_home_home;
     //变为公有 以便presenter调用
     public RecyclerView rv_list;
+    private int endFlag;
+    private HomeShopAdapter homeShopAdapter;
 
 
     @Override
@@ -123,7 +129,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView 
         //请求数据
         presenter.requestTuijianShops();
         //请求home list数据
-        presenter.requestHomeListData("0","1");
+        presenter.requestHomeListData(paixu,page+"");
 
     }
 
@@ -140,6 +146,9 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView 
         fl = (FrameLayout) v.findViewById(R.id.fl);
         //找到scrollview
         ptrsv = (CustomScrollView) v.findViewById(R.id.ptrsv);
+        //设置不允许刷新
+//        ptrsv.setEnableRefresh(false);
+
         vp1 = (ImageView) fragment_home_home.findViewById(R.id.vp1);
         vp2 = (ImageView) fragment_home_home.findViewById(R.id.vp2);
         //拿到recyclerView
@@ -191,7 +200,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView 
         ptrsv.setScrollViewListener(new CustomScrollView.ScrollViewListener() {
             @Override
             public void onscroll(CustomScrollView csv,int t) {
-                    Log.e(TAG, "onscroll:t的值 "+t );
                 if (t <= 0) {
                     // 只是layout背景透明(仿知乎滑动效果)
                     ma.customActionbar.setBackgroundColor(Color.argb(0,255, 255, 255));
@@ -202,7 +210,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView 
 
                     float scale = (float) t / vpheight;  //透明度按照比例去设置
                     float alpha = (255 * scale);  //算出当前的透明度值
-                        Log.e(TAG, "onscroll: hehe"+t );
                     // 只是layout背景透明(仿知乎滑动效果)
                        int alphaint=(int)alpha;
                     //因为算出来的值可能永远不能等于255，所以这么设置
@@ -239,11 +246,18 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView 
     @Subscribe(threadMode = ThreadMode.MainThread)
     public void showHomeShopList(HomeShopListBean listBean) {
         //设置homelist适配器
-         showHomeShopLists(rv_list);
-         presenter.setHomeListAdapter(new HomeShopAdapter(getActivity(),(ArrayList<HomeShopListBean.ListBean>) listBean.getList()));
+        totalLists.addAll((ArrayList<HomeShopListBean.ListBean>) listBean.getList());
+        if (homeShopAdapter==null){
+            homeShopAdapter = new HomeShopAdapter(getActivity(),totalLists);
+            showHomeShopLists(rv_list,listBean.getList(),homeShopAdapter);
+             presenter.setHomeListAdapter(homeShopAdapter);
+        }else{
+            homeShopAdapter.notifyDataSetChanged();
+        }
 
 
-    }
+        }
+
 
     //当获取到推荐商户时，怎么做
     @Subscribe(threadMode = ThreadMode.MainThread)
@@ -312,10 +326,56 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView 
     }
 
     @Override
-    public void showHomeShopLists(RecyclerView rv) {
+    public void showHomeShopLists(RecyclerView rv, List<HomeShopListBean.ListBean> lists,HomeShopAdapter adapter) {
         //设置layoutmanager
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         rv.setLayoutManager(linearLayoutManager);
+        setRecyclerViewListener(rv,lists,adapter);
+
+
+    }
+     //监听RecyclerView的滑动事件
+    @Override
+    public void setRecyclerViewListener(RecyclerView rv, List<HomeShopListBean.ListBean> lists, final HomeShopAdapter adaper) {
+        //拿到除去RecyclerView的高度
+        //slider高度
+        int sliderHeight = getResources().getDimensionPixelSize(R.dimen.sliderhight);
+        //第二个viewpager的高度
+        int viewpagermargin = getResources().getDimensionPixelSize(R.dimen.viewpagermargin);
+        int viewpagerHeight = getResources().getDimensionPixelSize(R.dimen.viewpagerheight);
+        //menu的高度
+        int menuHeight = getResources().getDimensionPixelSize(R.dimen.menuheight);
+        //recyclerview上边高度的总和
+        int upRecyclerView=sliderHeight+viewpagerHeight+menuHeight+viewpagermargin;
+        //recyclerview的高度
+        int recyclerViewHeight = getResources().getDimensionPixelSize(R.dimen.item_homeshop) * (lists.size());
+        //状态栏的高度
+        int statusBarHeight = MeasureUtils.getStatusBarHeight(getActivity());
+        //底部radiogroup的高度
+        int rg_height = getResources().getDimensionPixelSize(R.dimen.rg_height);
+        //拿手机屏幕的高度
+
+
+        endFlag = upRecyclerView+recyclerViewHeight- MeasureUtils.getScreenHeight2(getActivity())+statusBarHeight+rg_height;
+
+        Log.e(TAG, "upRecyclerView: "+ endFlag);
+
+        //给他设置滑动监听
+        ptrsv.setMScrollViewListener(new CustomScrollView.MScrollViewListener() {
+            @Override
+            public void onscroll(CustomScrollView csv, int t) {
+                //已经滑动到最底部
+                if (t>= endFlag){
+                    adaper.setIsEnd(true);
+                    adaper.notifyDataSetChanged();
+                    //再通知加载第二页数据
+                    presenter.requestHomeListData(paixu,(++page)+"");
+                }
+            }
+
+        });
+
+
 
 
     }

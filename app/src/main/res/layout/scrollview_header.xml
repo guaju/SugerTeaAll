@@ -4,7 +4,7 @@
     <LinearLayout
         android:id="@+id/refresh_des"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/scrollheaderheight"
         android:layout_centerInParent="true"
         android:gravity="center"
         android:orientation="vertical" >

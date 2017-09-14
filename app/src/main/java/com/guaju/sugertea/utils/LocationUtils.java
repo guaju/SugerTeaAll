@@ -10,7 +10,6 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
-import android.util.Log;
 import android.widget.Toast;
 
 import java.util.HashMap;
@@ -29,12 +28,10 @@ public class LocationUtils {
         //拿到当前可用的定位方式
         List<String> allProviders = manager.getAllProviders();
         for (String str : allProviders) {
-            Log.e(TAG, "getLL: " + str);
         }
         //拿到最佳的定位方式
         Criteria criteria = new Criteria();
         String bestProvider = manager.getBestProvider(criteria, false);
-        Log.e(TAG, "getLL: best provider" + bestProvider);
         if (ActivityCompat.checkSelfPermission(act, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(act, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -50,7 +47,6 @@ public class LocationUtils {
             public void onLocationChanged(Location location) {
                 double latitude = location.getLatitude();
                 double longitude = location.getLongitude();
-                Log.e(TAG, "listener "+latitude+"--"+longitude );
                 Toast.makeText(act, "listener "+latitude+"--"+longitude, Toast.LENGTH_SHORT).show();
             }
 

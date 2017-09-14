@@ -4,7 +4,6 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.os.Build;
-import android.util.Log;
 
 import com.tencent.map.geolocation.TencentLocation;
 import com.tencent.map.geolocation.TencentLocationListener;
@@ -42,7 +41,6 @@ public class MyQQLocationManager {
                 // 定位成功
                 String name = tencentLocation.getName();
                 String address = tencentLocation.getAddress();
-                Log.e(TAG, "onLocationChanged: " + name + "--" + address);
 
             } else {
                 // 定位失败
@@ -51,7 +49,6 @@ public class MyQQLocationManager {
 
         @Override
         public void onStatusUpdate(String s, int i, String s1) {
-            Log.e(TAG, "onStatusUpdate: gps开启了||关闭了");
         }
 
     }

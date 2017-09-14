@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import com.daimajia.slider.library.SliderLayout;
 import com.guaju.sugertea.adpter.HomeShopAdapter;
 import com.guaju.sugertea.model.bean.ADBean;
+import com.guaju.sugertea.model.bean.HomeShopListBean;
 import com.guaju.sugertea.model.bean.TuijianShopBean;
 
 import java.util.ArrayList;
@@ -23,7 +24,9 @@ public interface HomeContract {
         //初始化首页推荐商户的view
         void showVp2(ArrayList<TuijianShopBean.ListBean> list );
         //让recyclerview展示信息
-        void  showHomeShopLists(RecyclerView rv);
+        void  showHomeShopLists(RecyclerView rv,List<HomeShopListBean.ListBean> lists,HomeShopAdapter adapter);
+        //监听recyclerView的滑动事件
+        void setRecyclerViewListener(RecyclerView rv,List<HomeShopListBean.ListBean> lists,HomeShopAdapter adapter);
 
 
     }

@@ -1,8 +1,8 @@
 package com.guaju.sugertea.adpter;
 
 import android.content.Context;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +10,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.guaju.sugertea.R;
 import com.guaju.sugertea.constant.Constant;
 import com.guaju.sugertea.model.bean.HomeShopListBean;
@@ -23,31 +28,66 @@ import java.util.ArrayList;
  * Created by guaju on 2017/9/13.
  */
 
-public class HomeShopAdapter extends RecyclerView.Adapter<HomeShopAdapter.MyViewHolder> {
+public class HomeShopAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final String TAG = "HomeShopAdapter";
+    private static final int PROGRESS = 301;
+    private static final int NORMAL = 300;
+
     Context context;
     ArrayList<HomeShopListBean.ListBean> lists;
+    //定义一个表示，看是否是显示的是总条数的最后一条
+    boolean  isEnd=false;
+
     public HomeShopAdapter(Context context, ArrayList<HomeShopListBean.ListBean> lists) {
         this.context = context;
         this.lists = lists;
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        if (NORMAL==viewType){
+            //说明是一个正常的条目
         View v = LayoutInflater.from(context).inflate(R.layout.item_home_shop, parent, false);
         return new MyViewHolder(v);
+        }else {
+            View progress = LayoutInflater.from(context).inflate(R.layout.progress_home_shop, parent, false);
+          return new ProgressViewHolder(progress);
+        }
+
+
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
-              holder.setContent(lists.get(position));
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+           if (getItemViewType(position)==NORMAL){
+               //说明他是一个正常的条目
+               MyViewHolder mViewHolder = (MyViewHolder) holder;
+               mViewHolder.setContent(lists.get(position));
+           }
+
+
     }
 
+
+    //当recyclerview滑动到最底部，滑动当最底部条目出来的时候就展示总条数+1，这个1就是我们要展示的进度条
     @Override
     public int getItemCount() {
-        return lists.size();
+        if (isEnd){
+            return lists.size()+1;
+        }else{
+            return lists.size();
+        }
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        if (position==lists.size()){
+            return PROGRESS;
+        } else{
+
+        return NORMAL;
+        }
+    }
 
     public  class MyViewHolder extends RecyclerView.ViewHolder{
      ImageView iv_homeshop;
@@ -71,13 +111,15 @@ public class HomeShopAdapter extends RecyclerView.Adapter<HomeShopAdapter.MyView
      //专门提供设置内容的方法
      public  void  setContent(HomeShopListBean.ListBean bean){
          //图片设置
-         Glide.with(context).load(Constant.IMAGE_SHOP+bean.getLogo()).into(iv_homeshop);
+         Glide.with(context).
+                 load(Constant.IMAGE_SHOP+bean.getLogo()).
+                 listener(new MyRequestListener()).
+                 into(iv_homeshop);
          tv_title_homeshop.setText(bean.getMingcheng());
          tv_desc_homeshop.setText(bean.getJianjie());
          int juli = bean.getJuli();
          float fJuli = juli * 0.001f;
          tv_distance_homeshop.setText(fJuli+"km");
-         Log.e(TAG, "setContent: "+fJuli );
          ratingbar_homeshop.setRating(Integer.parseInt(bean.getPingji()));
          int cuxiao = bean.getCuxiao();
          if (cuxiao==0){
@@ -98,5 +140,31 @@ public class HomeShopAdapter extends RecyclerView.Adapter<HomeShopAdapter.MyView
          }
      }
  }
+
+ //提供一个方法，让调用者设置这个标识值
+    public void  setIsEnd(boolean isEnd){
+        this.isEnd=isEnd;
+    }
+
+    //定义一个progress的viewholder
+    public  class   ProgressViewHolder extends RecyclerView.ViewHolder{
+
+        public ProgressViewHolder(View itemView) {
+            super(itemView);
+        }
+    }
+    class MyRequestListener implements RequestListener{
+
+        @Override
+        public boolean onLoadFailed(@Nullable GlideException e, Object o, Target target, boolean b) {
+            Toast.makeText(context, "网络多慢，请检查您的网络", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+
+        @Override
+        public boolean onResourceReady(Object o, Object o2, Target target, DataSource dataSource, boolean b) {
+            return false;
+        }
+    }
 
 }

@@ -1,6 +1,6 @@
 package com.guaju.sugertea.httputil;
 
-import android.util.Log;
+import android.widget.Toast;
 
 import com.guaju.sugertea.api.API;
 import com.guaju.sugertea.api.APILYB;
@@ -25,34 +25,45 @@ import com.guaju.sugertea.utils.AppUtil;
 import com.guaju.sugertea.utils.SPUtils;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import de.greenrobot.event.EventBus;
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
+import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
-
-import static de.greenrobot.event.EventBus.TAG;
 
 /**
  * Created by guaju on 2017/8/21.
  */
 
 public class HttpHelper {
+    private static final String TAG = "HttpHelper";
     private static HttpHelper helper = new HttpHelper();
     private Retrofit retrofit;
     private Retrofit retrofitlyb;
     private final API api;
     private final APILYB apilyb;
+    private final OkHttpClient okHttpClient;
 
     private HttpHelper() {
+        okHttpClient = new OkHttpClient.Builder()
+                .connectTimeout(3, TimeUnit.SECONDS)
+                .readTimeout(3, TimeUnit.SECONDS)
+                .writeTimeout(3, TimeUnit.SECONDS)
+                .build();
+
+
         retrofit = new Retrofit.Builder()
                 .baseUrl(Constant.ROOT + Constant.URL_VERSION)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .client(okHttpClient)
                 .build();
         retrofitlyb = new Retrofit.Builder()
                 .baseUrl("http://testhf.irongbei.com/AppApi4/")
@@ -80,7 +91,6 @@ public class HttpHelper {
                 .subscribe(new Action1<HomeShopBean>() {
                     @Override
                     public void call(HomeShopBean homeShopBean) {
-                        Log.e(TAG, "call: " + homeShopBean.getCode());
                         EventBus.getDefault().post(new MainActivity.MyEvent(homeShopBean));
                     }
                 });
@@ -97,7 +107,6 @@ public class HttpHelper {
                 .subscribe(new Action1<BaseBean>() {
                     @Override
                     public void call(BaseBean baseBean) {
-                        Log.e(TAG, "call: " + baseBean.getCode());
                     }
                 });
     }
@@ -200,7 +209,6 @@ public class HttpHelper {
                 .subscribe(new Action1<Test>() {
                     @Override
                     public void call(Test test) {
-                        Log.e(TAG, "call: "+test.getMsg() );
                     }
                 });
     }
@@ -211,16 +219,29 @@ public class HttpHelper {
         final Observable<BaseBean<HomeShopListBean>> homeListBean = api.getHomeListBean(BSConstant.SHOP_LIST, openid, paixu, zuobiao, page);
         homeListBean.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<BaseBean<HomeShopListBean>>() {
+                .subscribe(new Subscriber<BaseBean<HomeShopListBean>>() {
                     @Override
-                    public void call(BaseBean<HomeShopListBean> homeShopListBeanBaseBean) {
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable throwable) {
+
+                        Toast.makeText(App.appContext, "网络异常，请检查您的网络", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onNext(BaseBean<HomeShopListBean> homeShopListBeanBaseBean) {
                         if (homeShopListBeanBaseBean.getCode()==200){
                             HomeShopListBean obj = homeShopListBeanBaseBean.getObj();
                             //往homefragment发送事件消息
                             EventBus.getDefault().post(obj);
 
                         }
+
                     }
                 });
     }
+
 }
