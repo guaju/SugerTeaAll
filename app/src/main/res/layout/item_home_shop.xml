@@ -1,17 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="@dimen/item_homeshop"
-    android:padding="2dp"
-    >
+    android:padding="2dp">
 
-    <ImageView
+    <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/iv_homeshop"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:background="@mipmap/ic_launcher"
+        app:roundAsCircle="true"
+        fresco:scaleType="centerCrop"
+        app:placeholderImage="@mipmap/ic_launcher"
+        app:placeholderImageScaleType="centerCrop"
         />
+    <!--fresco:roundedCornerRadius="5dp"圆角矩形
+        fresco:roundAsCircle="true"圆形
+        fresco:placeholderImage="@color/wait_color"
+        fresco:placeholderImageScaleType="fitCenter"
+
+
+
+    -->
+
+
+
     <LinearLayout
         android:padding="10dp"
         android:layout_width="match_parent"

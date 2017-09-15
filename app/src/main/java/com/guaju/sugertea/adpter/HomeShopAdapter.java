@@ -1,12 +1,12 @@
 package com.guaju.sugertea.adpter;
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -17,6 +17,11 @@ import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.interfaces.DraweeController;
+import com.facebook.drawee.view.SimpleDraweeView;
+import com.facebook.imagepipeline.request.ImageRequest;
+import com.facebook.imagepipeline.request.ImageRequestBuilder;
 import com.guaju.sugertea.R;
 import com.guaju.sugertea.constant.Constant;
 import com.guaju.sugertea.model.bean.HomeShopListBean;
@@ -90,14 +95,14 @@ public class HomeShopAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     public  class MyViewHolder extends RecyclerView.ViewHolder{
-     ImageView iv_homeshop;
+     SimpleDraweeView iv_homeshop;
      TextView tv_title_homeshop,tv_desc_homeshop,tv_cuxiao_homeshop,tv_quan_homeshop,tv_distance_homeshop;
      RatingBar ratingbar_homeshop;
      LinearLayout ll_cuxiao_homeshop,ll_quan_homeshop;
 
      public MyViewHolder(View itemView) {
          super(itemView);
-         iv_homeshop=(ImageView)itemView.findViewById(R.id.iv_homeshop);
+         iv_homeshop=(SimpleDraweeView)itemView.findViewById(R.id.iv_homeshop);
          tv_title_homeshop=(TextView)itemView.findViewById(R.id.tv_title_homeshop);
          tv_desc_homeshop=(TextView)itemView.findViewById(R.id.tv_desc_homeshop);
          tv_cuxiao_homeshop=(TextView)itemView.findViewById(R.id.tv_cuxiao_homeshop);
@@ -106,15 +111,28 @@ public class HomeShopAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
          ratingbar_homeshop=(RatingBar)itemView.findViewById(R.id.ratingbar_homeshop);
          ll_cuxiao_homeshop=(LinearLayout)itemView.findViewById(R.id.ll_cuxiao_homeshop);
          ll_quan_homeshop=(LinearLayout)itemView.findViewById(R.id.ll_quan_homeshop);
+         //初始化pipeline
 
      }
      //专门提供设置内容的方法
      public  void  setContent(HomeShopListBean.ListBean bean){
          //图片设置
-         Glide.with(context).
-                 load(Constant.IMAGE_SHOP+bean.getLogo()).
-                 listener(new MyRequestListener()).
-                 into(iv_homeshop);
+//         Glide.with(context).
+//                 load(Constant.IMAGE_SHOP+bean.getLogo()).
+//                 listener(new MyRequestListener()).
+//                 into(iv_homeshop);
+
+         ImageRequest request = ImageRequestBuilder.newBuilderWithSource(Uri.parse(Constant.IMAGE_SHOP+bean.getLogo()))
+                 .setProgressiveRenderingEnabled(true)
+                 .build();
+         DraweeController controller = Fresco.newDraweeControllerBuilder()
+                 .setImageRequest(request)
+                 .setOldController(iv_homeshop.getController())
+                 .build();
+         iv_homeshop.setController(controller);
+
+
+
          tv_title_homeshop.setText(bean.getMingcheng());
          tv_desc_homeshop.setText(bean.getJianjie());
          int juli = bean.getJuli();
@@ -157,6 +175,7 @@ public class HomeShopAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         @Override
         public boolean onLoadFailed(@Nullable GlideException e, Object o, Target target, boolean b) {
+            Glide.with(context).pauseRequests();//暂停加载
             Toast.makeText(context, "网络多慢，请检查您的网络", Toast.LENGTH_SHORT).show();
             return true;
         }

@@ -2,6 +2,7 @@ package com.guaju.sugertea.ui.home;
 
 import android.graphics.Color;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -68,6 +69,9 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView 
     float touchY = 0;
     int page=1;
     String paixu="0";//0表示默认排序
+    int netWorkStatus=0;
+    boolean scrollFlag=false;
+
     //装载总共recyclerview的数组
     ArrayList<HomeShopListBean.ListBean> totalLists=new ArrayList<>();
 
@@ -245,6 +249,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView 
 
     @Subscribe(threadMode = ThreadMode.MainThread)
     public void showHomeShopList(HomeShopListBean listBean) {
+        scrollFlag=false;
         //设置homelist适配器
         totalLists.addAll((ArrayList<HomeShopListBean.ListBean>) listBean.getList());
         if (homeShopAdapter==null){
@@ -267,6 +272,14 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView 
         showVp2(list);
 
     }
+     @Subscribe(threadMode = ThreadMode.MainThread)
+    public void setErrorNetWork(Throwable throwable) {
+        //TODO 更新第二个viewpager
+       netWorkStatus=-1;
+
+    }
+
+
 
 
     @Override
@@ -365,11 +378,24 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView 
             @Override
             public void onscroll(CustomScrollView csv, int t) {
                 //已经滑动到最底部
-                if (t>= endFlag){
+                if ((t>= endFlag)&&!scrollFlag){
+
+                    //更新
+                    scrollFlag=true;
                     adaper.setIsEnd(true);
                     adaper.notifyDataSetChanged();
                     //再通知加载第二页数据
-                    presenter.requestHomeListData(paixu,(++page)+"");
+                    if (netWorkStatus==-1){
+                        Handler handler = new Handler(Looper.getMainLooper());
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                            presenter.requestHomeListData(paixu,(++page)+"");
+                            }
+                        },3000);
+                    }else{
+                            presenter.requestHomeListData(paixu,(++page)+"");
+                    }
                 }
             }
 

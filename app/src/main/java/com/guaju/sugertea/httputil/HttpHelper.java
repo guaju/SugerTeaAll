@@ -1,7 +1,5 @@
 package com.guaju.sugertea.httputil;
 
-import android.widget.Toast;
-
 import com.guaju.sugertea.api.API;
 import com.guaju.sugertea.api.APILYB;
 import com.guaju.sugertea.app.App;
@@ -25,7 +23,6 @@ import com.guaju.sugertea.utils.AppUtil;
 import com.guaju.sugertea.utils.SPUtils;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import de.greenrobot.event.EventBus;
 import okhttp3.OkHttpClient;
@@ -53,9 +50,9 @@ public class HttpHelper {
 
     private HttpHelper() {
         okHttpClient = new OkHttpClient.Builder()
-                .connectTimeout(3, TimeUnit.SECONDS)
-                .readTimeout(3, TimeUnit.SECONDS)
-                .writeTimeout(3, TimeUnit.SECONDS)
+//                .connectTimeout(3, TimeUnit.SECONDS)
+//                .readTimeout(3, TimeUnit.SECONDS)
+//                .writeTimeout(3, TimeUnit.SECONDS)
                 .build();
 
 
@@ -227,8 +224,8 @@ public class HttpHelper {
 
                     @Override
                     public void onError(Throwable throwable) {
-
-                        Toast.makeText(App.appContext, "网络异常，请检查您的网络", Toast.LENGTH_SHORT).show();
+                        EventBus.getDefault().post(throwable);
+                        //Toast.makeText(App.appContext, "网络异常，请检查您的网络", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override

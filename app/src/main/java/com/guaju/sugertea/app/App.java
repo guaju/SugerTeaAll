@@ -3,6 +3,7 @@ package com.guaju.sugertea.app;
 import android.app.Application;
 import android.content.Context;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.guaju.sugertea.dao.bean.DaoMaster;
 import com.guaju.sugertea.dao.bean.DaoSession;
 import com.mob.MobSDK;
@@ -29,6 +30,7 @@ public class App extends Application {
         Database db =  helper.getWritableDb();
         //关联数据库，返回操作数据库的session对象
         daoSession = new DaoMaster(db).newSession();
+        Fresco.initialize(appContext);
     }
     //对外提供获取本数据的操作对象的方法
     public static DaoSession getDaoSession() {
