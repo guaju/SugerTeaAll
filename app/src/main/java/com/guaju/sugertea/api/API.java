@@ -8,6 +8,8 @@ import com.guaju.sugertea.model.bean.BaseBean;
 import com.guaju.sugertea.model.bean.HomeShopBean;
 import com.guaju.sugertea.model.bean.HomeShopListBean;
 import com.guaju.sugertea.model.bean.LoginBean;
+import com.guaju.sugertea.model.bean.Shanghu;
+import com.guaju.sugertea.model.bean.ShanghuUpDetailsBean;
 import com.guaju.sugertea.model.bean.TuijianShopBean;
 
 import retrofit2.http.Field;
@@ -128,4 +130,28 @@ public interface API {
             @NonNull @Query("page") String page
 
     );
+
+    /**
+     * 访问商户详情的单个条目
+     *
+     */
+    @GET(Constant.SHOP)
+    Observable<BaseBean<Shanghu>>  getShanghuDetail(
+            @NonNull @Query("bs") String bs,
+            @Query("openid") String openid,
+            @NonNull @Query("shanghuid") String shanghuid,
+            @Query("zuobiao") String zuobiao
+    );
+    /*
+    获取商户详情数据
+     */
+    @GET(Constant.SHOP)
+    Observable<BaseBean<ShanghuUpDetailsBean>>   getShanghuUpDetail(
+            @Query("bs") String bs,
+            @Query("openid") String openid,
+            @Query("shanghuid") String shanghuid,
+            @Query("zuobiao") String zuobiao
+    );
+
+
 }

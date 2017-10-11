@@ -1,6 +1,8 @@
 package com.guaju.sugertea.adpter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
@@ -25,6 +27,7 @@ import com.facebook.imagepipeline.request.ImageRequestBuilder;
 import com.guaju.sugertea.R;
 import com.guaju.sugertea.constant.Constant;
 import com.guaju.sugertea.model.bean.HomeShopListBean;
+import com.guaju.sugertea.ui.shanghu.ShanghuDetailActivity;
 
 import java.util.ArrayList;
 
@@ -33,10 +36,11 @@ import java.util.ArrayList;
  * Created by guaju on 2017/9/13.
  */
 
-public class HomeShopAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class HomeShopAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements View.OnClickListener{
     private static final String TAG = "HomeShopAdapter";
     private static final int PROGRESS = 301;
     private static final int NORMAL = 300;
+    private int mPosition=0;
 
     Context context;
     ArrayList<HomeShopListBean.ListBean> lists;
@@ -62,12 +66,26 @@ public class HomeShopAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     }
 
+
+     //在绑定viewholder的时候添加点击事件，接口回调的方式
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
            if (getItemViewType(position)==NORMAL){
                //说明他是一个正常的条目
                MyViewHolder mViewHolder = (MyViewHolder) holder;
                mViewHolder.setContent(lists.get(position));
+               //布局排序位置
+               holder.itemView.setOnClickListener(new View.OnClickListener() {
+                   @Override
+                   public void onClick(View v) {
+                       //跳转页面到商品详情
+                       Activity context = (Activity) HomeShopAdapter.this.context;
+                       Intent intent = new Intent(context, ShanghuDetailActivity.class);
+                       Intent shanghuid = intent.putExtra("shanghuid", lists.get(position).getId());
+                       context.startActivity(intent);
+                   }
+               });
+
            }
 
 
@@ -93,6 +111,8 @@ public class HomeShopAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return NORMAL;
         }
     }
+
+
 
     public  class MyViewHolder extends RecyclerView.ViewHolder{
      SimpleDraweeView iv_homeshop;
@@ -184,6 +204,11 @@ public class HomeShopAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         public boolean onResourceReady(Object o, Object o2, Target target, DataSource dataSource, boolean b) {
             return false;
         }
+    }
+    @Override
+    public void onClick(View v) {
+     //根据list中的数据做出
+
     }
 
 }

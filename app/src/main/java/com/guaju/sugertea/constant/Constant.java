@@ -60,4 +60,8 @@ public interface Constant {
     String SHARE_COUPON = "http://www.quanminlebang.com/m/activity/Coupon/index.html?kaquanid=%s&shanghuid=%s";
 
 
+    String SP_PHONENUM = "phonenum";
+    String SP_LOGINCODE = "logincode";
+    String SP_ISLOGIN = "islogin";
+    String SP_LOCATION = "location";
 }

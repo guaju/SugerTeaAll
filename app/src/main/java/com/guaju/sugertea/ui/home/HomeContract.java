@@ -39,11 +39,13 @@ public interface HomeContract {
         void requestADdata(String zuobiao);
 
        //解析广告数据，展示slider
-        void readADdata(List<ADBean.ContentBean> content, SliderLayout slider);
+        void setADdata(List<ADBean.ContentBean> content, SliderLayout slider);
        //拿到首页list信息
         void  requestHomeListData(String paixu,String  page);
 
         void setHomeListAdapter(HomeShopAdapter homeShopAdapter);
+        //控制menu条目的隐藏显示
+        void controlMenuDisplay();
     }
 
 

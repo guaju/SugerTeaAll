@@ -63,6 +63,8 @@
             />
 
         <activity android:name="com.guaju.sugertea.ui.login.ChooseLoginActivity"/>
+        <activity android:name=".ui.shanghu.ShanghuDetailActivity"></activity>
+        <activity android:name=".ui.shopdetail.ShopDetailActivity"></activity>
     </application>
 
 </manifest>

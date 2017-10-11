@@ -7,12 +7,14 @@ import com.guaju.sugertea.constant.BSConstant;
 import com.guaju.sugertea.constant.Constant;
 import com.guaju.sugertea.dao.bean.DaoSession;
 import com.guaju.sugertea.dao.bean.UserInfo;
+import com.guaju.sugertea.dao.bean.UserInfoDao;
 import com.guaju.sugertea.model.bean.ADBean;
 import com.guaju.sugertea.model.bean.BaseBean;
 import com.guaju.sugertea.model.bean.HomeShopBean;
 import com.guaju.sugertea.model.bean.HomeShopListBean;
 import com.guaju.sugertea.model.bean.LoginBean;
 import com.guaju.sugertea.model.bean.LoginInfo;
+import com.guaju.sugertea.model.bean.Shanghu;
 import com.guaju.sugertea.model.bean.TuijianShopBean;
 import com.guaju.sugertea.model.bean.UserInfoBean;
 import com.guaju.sugertea.model.lybbean.Test;
@@ -133,9 +135,9 @@ public class HttpHelper {
 //                           user.getHuiyuanka();//会员卡
 
                             SPUtils instance = SPUtils.getInstance(App.appContext, Constant.SPNAME);
-                            instance.putSp("phonenum", phone);
-                            instance.putSp("logincode", code);
-                            instance.putSp("islogin", true);
+                            instance.putSp(Constant.SP_PHONENUM, phone);
+                            instance.putSp(Constant.SP_LOGINCODE, code);
+                            instance.putSp(Constant.SP_ISLOGIN, true);
 
                             //跟以前的token一样，可以携带用户数据
                             DaoSession daoSession = App.getDaoSession();
@@ -240,5 +242,38 @@ public class HttpHelper {
                     }
                 });
     }
+    /**
+     * 获得商户详情
+     */
+   public void getShanghuDetail(String shanghuid){
+       //获取openid
+       DaoSession daoSession = App.getDaoSession();
+       //通过daoSession去拿到真正的管理者
+       UserInfoDao userInfoDao = daoSession.getUserInfoDao();
+       SPUtils sp = SPUtils.getInstance(App.appContext, Constant.SPNAME);
+       String phone = (String) sp.getSp(Constant.SP_PHONENUM, String.class);
+       UserInfo load = userInfoDao.load(phone);
+       String openId = load.getOpenId();
+       //获取坐
+       String location = (String) sp.getSp(Constant.SP_LOCATION, String.class);
+       Observable<BaseBean<Shanghu>> shanghuDetail = api.getShanghuDetail(BSConstant.SHOP_DETAIL, openId, shanghuid, location);
+       shanghuDetail.subscribeOn(Schedulers.io())
+               .observeOn(AndroidSchedulers.mainThread())
+               .subscribe(new Action1<BaseBean<Shanghu>>() {
+                   @Override
+                   public void call(BaseBean<Shanghu> shanghuBaseBean) {
+                       Shanghu obj = shanghuBaseBean.getObj();
+                       //把获取到的Shanghu，传给商户详情activity
+                       EventBus.getDefault().post(obj);
+                   }
+               });
+   }
+   /*
+   获得商户上方详情
+    */
+//   public  void getShanghuUpDetail(){
+//       api.getShanghuUpDetail();
+//   }
+
 
 }
