@@ -15,6 +15,10 @@ import com.guaju.sugertea.model.bean.HomeShopListBean;
 import com.guaju.sugertea.model.bean.LoginBean;
 import com.guaju.sugertea.model.bean.LoginInfo;
 import com.guaju.sugertea.model.bean.Shanghu;
+import com.guaju.sugertea.model.bean.ShanghuFuwuListBean;
+import com.guaju.sugertea.model.bean.ShanghuFuwuyuangongBean;
+import com.guaju.sugertea.model.bean.ShanghuPinglunBean;
+import com.guaju.sugertea.model.bean.ShanghuUpDetailsBean;
 import com.guaju.sugertea.model.bean.TuijianShopBean;
 import com.guaju.sugertea.model.bean.UserInfoBean;
 import com.guaju.sugertea.model.lybbean.Test;
@@ -271,9 +275,72 @@ public class HttpHelper {
    /*
    获得商户上方详情
     */
-//   public  void getShanghuUpDetail(){
-//       api.getShanghuUpDetail();
-//   }
+   public  void getShanghuUpDetail(String shanghuid){
+       //获取openid
+       DaoSession daoSession = App.getDaoSession();
+       //通过daoSession去拿到真正的管理者
+       UserInfoDao userInfoDao = daoSession.getUserInfoDao();
+       SPUtils sp = SPUtils.getInstance(App.appContext, Constant.SPNAME);
+       String phone = (String) sp.getSp(Constant.SP_PHONENUM, String.class);
+       UserInfo load = userInfoDao.load(phone);
+       String openId = load.getOpenId();
+       //获取坐
+       String location = (String) sp.getSp(Constant.SP_LOCATION, String.class);
+       Observable<BaseBean<ShanghuUpDetailsBean>> shanghuDetail = api.getShanghuUpDetail(BSConstant.SHOP_DETAIL, openId, shanghuid, location);
+       shanghuDetail.subscribeOn(Schedulers.io())
+               .observeOn(AndroidSchedulers.mainThread())
+               .subscribe(new Action1<BaseBean<ShanghuUpDetailsBean>>() {
+                   @Override
+                   public void call(BaseBean<ShanghuUpDetailsBean> bean) {
+                       ShanghuUpDetailsBean obj = bean.getObj();
+                       //把获取到的Shanghu，传给商户详情activity
+                       EventBus.getDefault().post(obj);
+                   }
+               });
+   }
+    /**
+     * 获得商户服务列表
+     */
+    public void getShanghuFuwu(String shanghuid){
+        Observable<BaseBean<ShanghuFuwuListBean>> shanghuFuwuList = api.getShanghuFuwuList(BSConstant.SERVICE_LIST, shanghuid, "1");
+        shanghuFuwuList.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<BaseBean<ShanghuFuwuListBean>>() {
+                    @Override
+                    public void call(BaseBean<ShanghuFuwuListBean> bean) {
+                        EventBus.getDefault().post(bean);
+                    }
+                });
+    }
+    /*
+    获得商户服务员工列表
+     */
+    public void getShanghuFuwuyuangong(String shanghuid){
+        Observable<BaseBean<ShanghuFuwuyuangongBean>> shanghuFuwuList = api.getShanghuFuwuyuangongList(BSConstant.SHOP_STAFF, shanghuid, "1");
+        shanghuFuwuList.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<BaseBean<ShanghuFuwuyuangongBean>>() {
+                    @Override
+                    public void call(BaseBean<ShanghuFuwuyuangongBean> bean) {
+                        EventBus.getDefault().post(bean);
+                    }
+                });
+    }
+
+    /**
+     * 获得商户评论列表
+     */
+    public void getShanghuPinglun(String shanghuid){
+        Observable<BaseBean<ShanghuPinglunBean>> shanghuFuwuList = api.getShanghuPinglun(BSConstant.SHOP_COMMENT, shanghuid, "1");
+        shanghuFuwuList.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<BaseBean<ShanghuPinglunBean>>() {
+                    @Override
+                    public void call(BaseBean<ShanghuPinglunBean> bean) {
+                        EventBus.getDefault().post(bean);
+                    }
+                });
+    }
 
 
 }

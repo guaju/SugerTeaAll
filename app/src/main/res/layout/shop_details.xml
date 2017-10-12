@@ -92,17 +92,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="营业事件11：00-100：00"
-                android:textColor="#888"
-                android:textSize="16sp" />
+                android:textColor="#000"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tv_adress"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="北京天安门广场"
+                android:maxLines="3"
+                android:textColor="#888"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_juli"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="北京天安门广场"
+                android:layout_marginTop="1dp"
+                android:text="1km"
                 android:textColor="#888"
-                android:textSize="16sp" />
+                android:textSize="12sp" />
+
 
         </LinearLayout>
 
@@ -112,6 +123,7 @@
             android:layout_weight="1" />
 
         <ImageView
+            android:id="@+id/iv_call"
             android:layout_gravity="center"
             android:layout_marginRight="20dp"
             android:layout_width="25dp"

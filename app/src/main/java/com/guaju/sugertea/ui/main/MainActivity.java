@@ -79,7 +79,6 @@ public class MainActivity extends FragmentActivity implements MainContract.MainV
         EventBus.getDefault().register(this);
         test();
         switch2Fragment("home");
-
     }
 
     private void initLogin() {

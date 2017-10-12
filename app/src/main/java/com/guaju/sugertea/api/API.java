@@ -9,6 +9,9 @@ import com.guaju.sugertea.model.bean.HomeShopBean;
 import com.guaju.sugertea.model.bean.HomeShopListBean;
 import com.guaju.sugertea.model.bean.LoginBean;
 import com.guaju.sugertea.model.bean.Shanghu;
+import com.guaju.sugertea.model.bean.ShanghuFuwuListBean;
+import com.guaju.sugertea.model.bean.ShanghuFuwuyuangongBean;
+import com.guaju.sugertea.model.bean.ShanghuPinglunBean;
 import com.guaju.sugertea.model.bean.ShanghuUpDetailsBean;
 import com.guaju.sugertea.model.bean.TuijianShopBean;
 
@@ -151,6 +154,43 @@ public interface API {
             @Query("openid") String openid,
             @Query("shanghuid") String shanghuid,
             @Query("zuobiao") String zuobiao
+    );
+    /**
+     * 获得商户详情中服务项目内容
+     */
+    @GET(Constant.SHOP)
+    Observable<BaseBean<ShanghuFuwuListBean>> getShanghuFuwuList(
+            @Query("bs") String bs,
+            @Query("shanghuid") String shanghuid,
+            @Query("page") String page
+    );
+
+    /**
+     * 获得商户服务员工列表
+     * @param bs
+     * @param shanghuid
+     * @param page
+     * @return
+     */
+    @GET(Constant.SHOP)
+    Observable<BaseBean<ShanghuFuwuyuangongBean>> getShanghuFuwuyuangongList(
+            @Query("bs") String bs,
+            @Query("shanghuid") String shanghuid,
+            @Query("page") String page
+    );
+
+    /**
+     * 获得商户评论
+     * @param bs
+     * @param shanghuid
+     * @param page
+     * @return
+     */
+    @GET(Constant.SHOP)
+    Observable<BaseBean<ShanghuPinglunBean>> getShanghuPinglun(
+            @Query("bs") String bs,
+            @Query("shanghuid") String shanghuid,
+            @Query("page") String page
     );
 
 
