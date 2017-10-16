@@ -20,6 +20,8 @@ public interface ShopDetailContract {
         void bindTab2Vp(TabLayout tab, ViewPager viewPager);
         //显示布局上方信息
         void  setUpView(ShanghuUpDetailsBean bean);
+        //设置tablayout的文字信息
+        void setTabLayoutTabs(int  commentNum);
 
 
     }

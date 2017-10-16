@@ -3,7 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/ic_empty"
+        android:layout_width="114dp"
+        android:layout_height="127dp"
+        android:layout_gravity="center"
+        android:background="@drawable/img_loading" />
+
+
     <android.support.v7.widget.RecyclerView
+        android:visibility="invisible"
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

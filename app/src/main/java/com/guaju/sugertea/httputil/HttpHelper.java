@@ -17,8 +17,8 @@ import com.guaju.sugertea.model.bean.LoginInfo;
 import com.guaju.sugertea.model.bean.Shanghu;
 import com.guaju.sugertea.model.bean.ShanghuFuwuListBean;
 import com.guaju.sugertea.model.bean.ShanghuFuwuyuangongBean;
-import com.guaju.sugertea.model.bean.ShanghuPinglunBean;
 import com.guaju.sugertea.model.bean.ShanghuUpDetailsBean;
+import com.guaju.sugertea.model.bean.ShopCommentBean;
 import com.guaju.sugertea.model.bean.TuijianShopBean;
 import com.guaju.sugertea.model.bean.UserInfoBean;
 import com.guaju.sugertea.model.lybbean.Test;
@@ -308,7 +308,7 @@ public class HttpHelper {
                 .subscribe(new Action1<BaseBean<ShanghuFuwuListBean>>() {
                     @Override
                     public void call(BaseBean<ShanghuFuwuListBean> bean) {
-                        EventBus.getDefault().post(bean);
+                        EventBus.getDefault().post(bean.getObj());
                     }
                 });
     }
@@ -322,7 +322,7 @@ public class HttpHelper {
                 .subscribe(new Action1<BaseBean<ShanghuFuwuyuangongBean>>() {
                     @Override
                     public void call(BaseBean<ShanghuFuwuyuangongBean> bean) {
-                        EventBus.getDefault().post(bean);
+                        EventBus.getDefault().post(bean.getObj());
                     }
                 });
     }
@@ -331,13 +331,13 @@ public class HttpHelper {
      * 获得商户评论列表
      */
     public void getShanghuPinglun(String shanghuid){
-        Observable<BaseBean<ShanghuPinglunBean>> shanghuFuwuList = api.getShanghuPinglun(BSConstant.SHOP_COMMENT, shanghuid, "1");
+        Observable<BaseBean<ShopCommentBean>> shanghuFuwuList = api.getShanghuPinglun(BSConstant.SHOP_COMMENT, shanghuid, "1");
         shanghuFuwuList.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<BaseBean<ShanghuPinglunBean>>() {
+                .subscribe(new Action1<BaseBean<ShopCommentBean>>() {
                     @Override
-                    public void call(BaseBean<ShanghuPinglunBean> bean) {
-                        EventBus.getDefault().post(bean);
+                    public void call(BaseBean<ShopCommentBean> bean) {
+                        EventBus.getDefault().post(bean.getObj());
                     }
                 });
     }

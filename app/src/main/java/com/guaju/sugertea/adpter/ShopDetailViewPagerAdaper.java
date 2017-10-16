@@ -3,7 +3,6 @@ package com.guaju.sugertea.adpter;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -12,15 +11,17 @@ import java.util.ArrayList;
  */
 
 public class ShopDetailViewPagerAdaper extends PagerAdapter {
-    ArrayList<ImageView> lists;
+    ArrayList<View> lists;
+    String[] tabNames;
 
-    public ShopDetailViewPagerAdaper(ArrayList<ImageView> lists) {
+    public ShopDetailViewPagerAdaper(ArrayList<View> lists,String[] tabNames) {
         this.lists = lists;
+        this.tabNames=tabNames;
     }
 
     @Override
     public int getCount() {
-        return 3;
+        return lists.size();
     }
 
     @Override
@@ -30,14 +31,14 @@ public class ShopDetailViewPagerAdaper extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        ImageView imageView = lists.get(position);
-        ViewGroup parent = (ViewGroup) imageView.getParent();
+        View recyclerView = lists.get(position);
+        ViewGroup parent = (ViewGroup) recyclerView.getParent();
         if (parent!=null){
-            parent.removeView(imageView);
+            parent.removeView(recyclerView);
         }
-        container.addView(imageView);
+        container.addView(recyclerView);
 
-        return imageView;
+        return recyclerView;
     }
 
     @Override
@@ -47,6 +48,7 @@ public class ShopDetailViewPagerAdaper extends PagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return "服务项目";
+
+        return tabNames[position];
     }
 }

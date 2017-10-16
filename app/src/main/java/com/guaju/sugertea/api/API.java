@@ -11,8 +11,8 @@ import com.guaju.sugertea.model.bean.LoginBean;
 import com.guaju.sugertea.model.bean.Shanghu;
 import com.guaju.sugertea.model.bean.ShanghuFuwuListBean;
 import com.guaju.sugertea.model.bean.ShanghuFuwuyuangongBean;
-import com.guaju.sugertea.model.bean.ShanghuPinglunBean;
 import com.guaju.sugertea.model.bean.ShanghuUpDetailsBean;
+import com.guaju.sugertea.model.bean.ShopCommentBean;
 import com.guaju.sugertea.model.bean.TuijianShopBean;
 
 import retrofit2.http.Field;
@@ -187,7 +187,7 @@ public interface API {
      * @return
      */
     @GET(Constant.SHOP)
-    Observable<BaseBean<ShanghuPinglunBean>> getShanghuPinglun(
+    Observable<BaseBean<ShopCommentBean>> getShanghuPinglun(
             @Query("bs") String bs,
             @Query("shanghuid") String shanghuid,
             @Query("page") String page
