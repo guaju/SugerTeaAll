@@ -130,13 +130,13 @@ public class ShopDetailBelowAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             String jianjie = bean.getJianjie();
             String jine = bean.getJine();
             String photo = Constant.IMAGE_SERVICE + bean.getPhoto();
-            int yuyueshu = bean.getYuyueshu();
+            String yuyueshu = bean.getYuyueshu();
             serviceIcon.setImageURI(Uri.parse(photo));
             tvName.setText(name);
             tvDanwei.setText(danwei);
             tvPrice.setText(jine);
             tvDesc.setText(jianjie);
-            buyNum.setText(yuyueshu == 0 ? "" : "已约" + yuyueshu + "单");
+            buyNum.setText(yuyueshu == "0" ? "" : "已约" + yuyueshu + "单");
         }
 
     }
@@ -160,7 +160,7 @@ public class ShopDetailBelowAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             String avatar = Constant.IMAGE_AVATAR + bean.getAvatar();
             icAvatar.setImageURI(avatar);
             tvName.setText(bean.getNickname());
-            ratingBar.setRating(bean.getFuwupingfen());
+            ratingBar.setRating(Float.parseFloat(bean.getFuwupingfen()));
 
         }
     }

@@ -143,18 +143,18 @@ public class ShanghuUpDetailsBean {
             private String rangjiajine;
             private String rangjiazhekou;
             private String tichengfangshi;
-            private int shifoushoucang;
-            private int juli;
-            private int xiaoliang;
-            private int pinglunshu;
-            private int pingfen;
-            private int cuxiao;
+            private String shifoushoucang;
+            private String juli;
+            private String xiaoliang;
+            private String pinglunshu;
+            private String pingfen;
+            private String cuxiao;
             private Object cuxiaofuwumingcheng;
             private Object jichufuwutxt;
-            private int gongkaikaquan;
+            private String gongkaikaquan;
             private Object kaquanlist;
             private Object kaquanmingcheng;
-            private int paixu;
+            private String paixu;
 
             public String getId() {
                 return id;
@@ -532,51 +532,51 @@ public class ShanghuUpDetailsBean {
                 this.tichengfangshi = tichengfangshi;
             }
 
-            public int getShifoushoucang() {
+            public String getShifoushoucang() {
                 return shifoushoucang;
             }
 
-            public void setShifoushoucang(int shifoushoucang) {
+            public void setShifoushoucang(String shifoushoucang) {
                 this.shifoushoucang = shifoushoucang;
             }
 
-            public int getJuli() {
+            public String getJuli() {
                 return juli;
             }
 
-            public void setJuli(int juli) {
+            public void setJuli(String juli) {
                 this.juli = juli;
             }
 
-            public int getXiaoliang() {
+            public String getXiaoliang() {
                 return xiaoliang;
             }
 
-            public void setXiaoliang(int xiaoliang) {
+            public void setXiaoliang(String xiaoliang) {
                 this.xiaoliang = xiaoliang;
             }
 
-            public int getPinglunshu() {
+            public String getPinglunshu() {
                 return pinglunshu;
             }
 
-            public void setPinglunshu(int pinglunshu) {
+            public void setPinglunshu(String pinglunshu) {
                 this.pinglunshu = pinglunshu;
             }
 
-            public int getPingfen() {
+            public String getPingfen() {
                 return pingfen;
             }
 
-            public void setPingfen(int pingfen) {
+            public void setPingfen(String pingfen) {
                 this.pingfen = pingfen;
             }
 
-            public int getCuxiao() {
+            public String getCuxiao() {
                 return cuxiao;
             }
 
-            public void setCuxiao(int cuxiao) {
+            public void setCuxiao(String cuxiao) {
                 this.cuxiao = cuxiao;
             }
 
@@ -596,11 +596,11 @@ public class ShanghuUpDetailsBean {
                 this.jichufuwutxt = jichufuwutxt;
             }
 
-            public int getGongkaikaquan() {
+            public String getGongkaikaquan() {
                 return gongkaikaquan;
             }
 
-            public void setGongkaikaquan(int gongkaikaquan) {
+            public void setGongkaikaquan(String gongkaikaquan) {
                 this.gongkaikaquan = gongkaikaquan;
             }
 
@@ -620,11 +620,11 @@ public class ShanghuUpDetailsBean {
                 this.kaquanmingcheng = kaquanmingcheng;
             }
 
-            public int getPaixu() {
+            public String getPaixu() {
                 return paixu;
             }
 
-            public void setPaixu(int paixu) {
+            public void setPaixu(String paixu) {
                 this.paixu = paixu;
             }
         }

@@ -14,24 +14,24 @@ public class ShanghuPinglunBean {
          * list : null
          */
 
-        private int zongyeshu;
-        private int zongtiaoshu;
+        private String zongyeshu;
+        private String zongtiaoshu;
         private String page;
         private Object list;
 
-        public int getZongyeshu() {
+        public String getZongyeshu() {
             return zongyeshu;
         }
 
-        public void setZongyeshu(int zongyeshu) {
+        public void setZongyeshu(String zongyeshu) {
             this.zongyeshu = zongyeshu;
         }
 
-        public int getZongtiaoshu() {
+        public String getZongtiaoshu() {
             return zongtiaoshu;
         }
 
-        public void setZongtiaoshu(int zongtiaoshu) {
+        public void setZongtiaoshu(String zongtiaoshu) {
             this.zongtiaoshu = zongtiaoshu;
         }
 

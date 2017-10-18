@@ -14,27 +14,27 @@ public class ShanghuFuwuyuangongBean {
          * zongyeshu : 1
          * zongtiaoshu : 1
          * page : 1
-         * list : [{"id":"5103","phone":"17310808303","openid":"44499d840357739c2757c8b5c286144b","name":"沈鸿飞","nickname":"沈经理","sex":"1","idnumber":"0","idpic":null,"avatar":"1492079849721.jpg","status":"3","wx_openid":"","unionid":"","longitude":null,"latitude":null,"regtime":"1492060571","logintime":"1492060571","logintimes":"1492060571","tjid":null,"beizhu":"要求打回\r\n","profession":"","birthday":"631123200","location":"体验小区","cid":"","idpics":"","idpicss":"","if_work":"2","qqopenid":"","shequid":"0","shanghuid":"2852","shanghujibie":"3","renzhengtime":"0","shanghunicheng":"王部长","zhiyezhao":"1492079849474.jpg","shenheshijian":"1492079849","tuijian":"1","jinyongshijian":"0","shanghujinyong":"0","weixin":"17310808303","qq":"","wanshanziliao":"2","laiyuan":"shanghucaiji","badge":"0","yuangongjianjie":"","lizhishijian":"0","paizhongleixing":"0","paizhongshijian":"0","xingxiangzhao":"","gonghao":"","fuwupingfen":5,"fuwupinglunshu":0,"jiedanshu":0,"dianpu":{"id":"2852","openid":"44499d840357739c2757c8b5c286144b","mingcheng":"华夏良子(工体店)","dianhua":"010-65516004","kaishishijian":"11:00","jieshushijian":"00:00","xiangmu":",2,5,6,84,3,","xiangmutxt":"足疗-推拿按摩-精油SPA-刮痧-艾灸","quyu":",,","quyutxt":"","dizhi":"朝阳区吉祥里小区201号楼首层华普超市北侧","cover":"1500973717938.jpg","logo":"1501154509147.jpg","zhizhao":"","uid":"38","tuijian":"1","jianjie":"足疗，推拿按摩，精油SPA，刮痧，艾灸","status":"2","beizhu":"已完成\r\n","jinyongshijian":"","jieshao":"<p><br><img alt=\"4.jpg\" src=\"/photo/shanghu/1492079703664.jpg\" width=\"600\" height=\"400\"><\/p><p><img alt=\"5.jpg\" src=\"/photo/shanghu/1492079703881.jpg\" width=\"600\" height=\"400\"><\/p><p><img alt=\"6.jpg\" src=\"/photo/shanghu/1492079703813.jpg\" width=\"600\" height=\"400\"><\/p><p><img alt=\"7.jpg\" src=\"/photo/shanghu/1492154080296.jpg\" width=\"600\" height=\"400\"><\/p><p><img alt=\"8.jpg\" src=\"/photo/shanghu/1492154079585.jpg\" width=\"600\" height=\"400\"><\/p><p><img alt=\"9.jpg\" src=\"/photo/shanghu/1492154079286.jpg\" width=\"600\" height=\"400\"><br><\/p>","tubiao":"1501154246760.jpg","dianpuleixing":"0","olong":"116.44095","olat":"39.926357","addtime":"1492060571","shenheshijian":"1492079849","pingji":"4","renshu":"40","mianji":"2000","liansuo":"1","fuwuxiangmu":"","bianjirenyuan":"50","jichufuwu":"","duanxinshuliang":"30","dianjiake":"0","password":"","jiancheng":"","rihuo":"0","zhifubaoshanghuhao":"","zhifubaotoken":"","lakalashanghuhao":"","lakalazhongduanhao":"","weixinshanghuhao":"","rangjiajine":"0","rangjiazhekou":"10","tichengfangshi":"2","shifoushoucang":0,"juli":12227693,"xiaoliang":0,"pinglunshu":0,"pingfen":0,"cuxiao":0,"cuxiaofuwumingcheng":null,"jichufuwutxt":null,"gongkaikaquan":0,"kaquanlist":null,"kaquanmingcheng":null,"paixu":30}}]
+         * list : [{"id":"5103","phone":"17310808303","openid":"44499d840357739c2757c8b5c286144b","name":"沈鸿飞","nickname":"沈经理","sex":"1","idnumber":"0","idpic":null,"avatar":"1492079849721.jpg","status":"3","wx_openid":"","unionid":"","longitude":null,"latitude":null,"regtime":"1492060571","logStringime":"1492060571","logStringimes":"1492060571","tjid":null,"beizhu":"要求打回\r\n","profession":"","birthday":"631123200","location":"体验小区","cid":"","idpics":"","idpicss":"","if_work":"2","qqopenid":"","shequid":"0","shanghuid":"2852","shanghujibie":"3","renzhengtime":"0","shanghunicheng":"王部长","zhiyezhao":"1492079849474.jpg","shenheshijian":"1492079849","tuijian":"1","jinyongshijian":"0","shanghujinyong":"0","weixin":"17310808303","qq":"","wanshanziliao":"2","laiyuan":"shanghucaiji","badge":"0","yuangongjianjie":"","lizhishijian":"0","paizhongleixing":"0","paizhongshijian":"0","xingxiangzhao":"","gonghao":"","fuwupingfen":5,"fuwupinglunshu":0,"jiedanshu":0,"dianpu":{"id":"2852","openid":"44499d840357739c2757c8b5c286144b","mingcheng":"华夏良子(工体店)","dianhua":"010-65516004","kaishishijian":"11:00","jieshushijian":"00:00","xiangmu":",2,5,6,84,3,","xiangmutxt":"足疗-推拿按摩-精油SPA-刮痧-艾灸","quyu":",,","quyutxt":"","dizhi":"朝阳区吉祥里小区201号楼首层华普超市北侧","cover":"1500973717938.jpg","logo":"1501154509147.jpg","zhizhao":"","uid":"38","tuijian":"1","jianjie":"足疗，推拿按摩，精油SPA，刮痧，艾灸","status":"2","beizhu":"已完成\r\n","jinyongshijian":"","jieshao":"<p><br><img alt=\"4.jpg\" src=\"/photo/shanghu/1492079703664.jpg\" width=\"600\" height=\"400\"><\/p><p><img alt=\"5.jpg\" src=\"/photo/shanghu/1492079703881.jpg\" width=\"600\" height=\"400\"><\/p><p><img alt=\"6.jpg\" src=\"/photo/shanghu/1492079703813.jpg\" width=\"600\" height=\"400\"><\/p><p><img alt=\"7.jpg\" src=\"/photo/shanghu/1492154080296.jpg\" width=\"600\" height=\"400\"><\/p><p><img alt=\"8.jpg\" src=\"/photo/shanghu/1492154079585.jpg\" width=\"600\" height=\"400\"><\/p><p><img alt=\"9.jpg\" src=\"/photo/shanghu/1492154079286.jpg\" width=\"600\" height=\"400\"><br><\/p>","tubiao":"1501154246760.jpg","dianpuleixing":"0","olong":"116.44095","olat":"39.926357","addtime":"1492060571","shenheshijian":"1492079849","pingji":"4","renshu":"40","mianji":"2000","liansuo":"1","fuwuxiangmu":"","bianjirenyuan":"50","jichufuwu":"","duanxinshuliang":"30","dianjiake":"0","password":"","jiancheng":"","rihuo":"0","zhifubaoshanghuhao":"","zhifubaotoken":"","lakalashanghuhao":"","lakalazhongduanhao":"","weixinshanghuhao":"","rangjiajine":"0","rangjiazhekou":"10","tichengfangshi":"2","shifoushoucang":0,"juli":12227693,"xiaoliang":0,"pinglunshu":0,"pingfen":0,"cuxiao":0,"cuxiaofuwumingcheng":null,"jichufuwutxt":null,"gongkaikaquan":0,"kaquanlist":null,"kaquanmingcheng":null,"paixu":30}}]
          */
 
-        private int zongyeshu;
-        private int zongtiaoshu;
+        private String zongyeshu;
+        private String zongtiaoshu;
         private String page;
         private List<ListBean> list;
 
-        public int getZongyeshu() {
+        public String getZongyeshu() {
             return zongyeshu;
         }
 
-        public void setZongyeshu(int zongyeshu) {
+        public void setZongyeshu(String zongyeshu) {
             this.zongyeshu = zongyeshu;
         }
 
-        public int getZongtiaoshu() {
+        public String getZongtiaoshu() {
             return zongtiaoshu;
         }
 
-        public void setZongtiaoshu(int zongtiaoshu) {
+        public void setZongtiaoshu(String zongtiaoshu) {
             this.zongtiaoshu = zongtiaoshu;
         }
 
@@ -71,8 +71,8 @@ public class ShanghuFuwuyuangongBean {
              * longitude : null
              * latitude : null
              * regtime : 1492060571
-             * logintime : 1492060571
-             * logintimes : 1492060571
+             * logStringime : 1492060571
+             * logStringimes : 1492060571
              * tjid : null
              * beizhu : 要求打回
 
@@ -126,8 +126,8 @@ public class ShanghuFuwuyuangongBean {
             private Object longitude;
             private Object latitude;
             private String regtime;
-            private String logintime;
-            private String logintimes;
+            private String logStringime;
+            private String logStringimes;
             private Object tjid;
             private String beizhu;
             private String profession;
@@ -159,9 +159,9 @@ public class ShanghuFuwuyuangongBean {
             private String paizhongshijian;
             private String xingxiangzhao;
             private String gonghao;
-            private int fuwupingfen;
-            private int fuwupinglunshu;
-            private int jiedanshu;
+            private String fuwupingfen;
+            private String fuwupinglunshu;
+            private String jiedanshu;
             private DianpuBean dianpu;
 
             public String getId() {
@@ -284,20 +284,20 @@ public class ShanghuFuwuyuangongBean {
                 this.regtime = regtime;
             }
 
-            public String getLogintime() {
-                return logintime;
+            public String getLogStringime() {
+                return logStringime;
             }
 
-            public void setLogintime(String logintime) {
-                this.logintime = logintime;
+            public void setLogStringime(String logStringime) {
+                this.logStringime = logStringime;
             }
 
-            public String getLogintimes() {
-                return logintimes;
+            public String getLogStringimes() {
+                return logStringimes;
             }
 
-            public void setLogintimes(String logintimes) {
-                this.logintimes = logintimes;
+            public void setLogStringimes(String logStringimes) {
+                this.logStringimes = logStringimes;
             }
 
             public Object getTjid() {
@@ -548,27 +548,27 @@ public class ShanghuFuwuyuangongBean {
                 this.gonghao = gonghao;
             }
 
-            public int getFuwupingfen() {
+            public String getFuwupingfen() {
                 return fuwupingfen;
             }
 
-            public void setFuwupingfen(int fuwupingfen) {
+            public void setFuwupingfen(String fuwupingfen) {
                 this.fuwupingfen = fuwupingfen;
             }
 
-            public int getFuwupinglunshu() {
+            public String getFuwupinglunshu() {
                 return fuwupinglunshu;
             }
 
-            public void setFuwupinglunshu(int fuwupinglunshu) {
+            public void setFuwupinglunshu(String fuwupinglunshu) {
                 this.fuwupinglunshu = fuwupinglunshu;
             }
 
-            public int getJiedanshu() {
+            public String getJiedanshu() {
                 return jiedanshu;
             }
 
-            public void setJiedanshu(int jiedanshu) {
+            public void setJiedanshu(String jiedanshu) {
                 this.jiedanshu = jiedanshu;
             }
 
@@ -691,18 +691,18 @@ public class ShanghuFuwuyuangongBean {
                 private String rangjiajine;
                 private String rangjiazhekou;
                 private String tichengfangshi;
-                private int shifoushoucang;
-                private int juli;
-                private int xiaoliang;
-                private int pinglunshu;
-                private int pingfen;
-                private int cuxiao;
+                private String shifoushoucang;
+                private String juli;
+                private String xiaoliang;
+                private String pinglunshu;
+                private String pingfen;
+                private String cuxiao;
                 private Object cuxiaofuwumingcheng;
                 private Object jichufuwutxt;
-                private int gongkaikaquan;
+                private String gongkaikaquan;
                 private Object kaquanlist;
                 private Object kaquanmingcheng;
-                private int paixu;
+                private String paixu;
 
                 public String getId() {
                     return id;
@@ -1080,51 +1080,51 @@ public class ShanghuFuwuyuangongBean {
                     this.tichengfangshi = tichengfangshi;
                 }
 
-                public int getShifoushoucang() {
+                public String getShifoushoucang() {
                     return shifoushoucang;
                 }
 
-                public void setShifoushoucang(int shifoushoucang) {
+                public void setShifoushoucang(String shifoushoucang) {
                     this.shifoushoucang = shifoushoucang;
                 }
 
-                public int getJuli() {
+                public String getJuli() {
                     return juli;
                 }
 
-                public void setJuli(int juli) {
+                public void setJuli(String juli) {
                     this.juli = juli;
                 }
 
-                public int getXiaoliang() {
+                public String getXiaoliang() {
                     return xiaoliang;
                 }
 
-                public void setXiaoliang(int xiaoliang) {
+                public void setXiaoliang(String xiaoliang) {
                     this.xiaoliang = xiaoliang;
                 }
 
-                public int getPinglunshu() {
+                public String getPinglunshu() {
                     return pinglunshu;
                 }
 
-                public void setPinglunshu(int pinglunshu) {
+                public void setPinglunshu(String pinglunshu) {
                     this.pinglunshu = pinglunshu;
                 }
 
-                public int getPingfen() {
+                public String getPingfen() {
                     return pingfen;
                 }
 
-                public void setPingfen(int pingfen) {
+                public void setPingfen(String pingfen) {
                     this.pingfen = pingfen;
                 }
 
-                public int getCuxiao() {
+                public String getCuxiao() {
                     return cuxiao;
                 }
 
-                public void setCuxiao(int cuxiao) {
+                public void setCuxiao(String cuxiao) {
                     this.cuxiao = cuxiao;
                 }
 
@@ -1144,11 +1144,11 @@ public class ShanghuFuwuyuangongBean {
                     this.jichufuwutxt = jichufuwutxt;
                 }
 
-                public int getGongkaikaquan() {
+                public String getGongkaikaquan() {
                     return gongkaikaquan;
                 }
 
-                public void setGongkaikaquan(int gongkaikaquan) {
+                public void setGongkaikaquan(String gongkaikaquan) {
                     this.gongkaikaquan = gongkaikaquan;
                 }
 
@@ -1168,11 +1168,11 @@ public class ShanghuFuwuyuangongBean {
                     this.kaquanmingcheng = kaquanmingcheng;
                 }
 
-                public int getPaixu() {
+                public String getPaixu() {
                     return paixu;
                 }
 
-                public void setPaixu(int paixu) {
+                public void setPaixu(String paixu) {
                     this.paixu = paixu;
                 }
             }

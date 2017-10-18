@@ -140,10 +140,10 @@ public class ShanghuFuwuListBean {
             private String fenleiid;
             private String fuwushichang;
             private String fuwucishu;
-            private int fuwupingfen;
-            private int fuwupinglunshu;
-            private int yuyueshu;
-            private int paixu;
+            private String fuwupingfen;
+            private String fuwupinglunshu;
+            private String yuyueshu;
+            private String paixu;
 
             public String getId() {
                 return id;
@@ -457,35 +457,35 @@ public class ShanghuFuwuListBean {
                 this.fuwucishu = fuwucishu;
             }
 
-            public int getFuwupingfen() {
+            public String getFuwupingfen() {
                 return fuwupingfen;
             }
 
-            public void setFuwupingfen(int fuwupingfen) {
+            public void setFuwupingfen(String fuwupingfen) {
                 this.fuwupingfen = fuwupingfen;
             }
 
-            public int getFuwupinglunshu() {
+            public String getFuwupinglunshu() {
                 return fuwupinglunshu;
             }
 
-            public void setFuwupinglunshu(int fuwupinglunshu) {
+            public void setFuwupinglunshu(String fuwupinglunshu) {
                 this.fuwupinglunshu = fuwupinglunshu;
             }
 
-            public int getYuyueshu() {
+            public String getYuyueshu() {
                 return yuyueshu;
             }
 
-            public void setYuyueshu(int yuyueshu) {
+            public void setYuyueshu(String yuyueshu) {
                 this.yuyueshu = yuyueshu;
             }
 
-            public int getPaixu() {
+            public String getPaixu() {
                 return paixu;
             }
 
-            public void setPaixu(int paixu) {
+            public void setPaixu(String paixu) {
                 this.paixu = paixu;
             }
         }

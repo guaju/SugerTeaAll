@@ -7,24 +7,24 @@ import java.util.ArrayList;
  */
 
 public class ShopCommentBean {
-    private int zongyeshu;
-    private int zongtiaoshu;
+    private String zongyeshu;
+    private String zongtiaoshu;
     private String page;
     private ArrayList<Comment> list;
 
-    public int getZongyeshu() {
+    public String getZongyeshu() {
         return zongyeshu;
     }
 
-    public void setZongyeshu(int zongyeshu) {
+    public void setZongyeshu(String zongyeshu) {
         this.zongyeshu = zongyeshu;
     }
 
-    public int getZongtiaoshu() {
+    public String getZongtiaoshu() {
         return zongtiaoshu;
     }
 
-    public void setZongtiaoshu(int zongtiaoshu) {
+    public void setZongtiaoshu(String zongtiaoshu) {
         this.zongtiaoshu = zongtiaoshu;
     }
 
@@ -69,7 +69,7 @@ public class ShopCommentBean {
          * location :
          * longitude :
          * latitude :
-         * user : {"id":"16449","phone":"13522665310","openid":"09f70a1bc8a4fee1c373a19b3e51fed1","name":"秦红兵","nickname":null,"sex":"1","idnumber":null,"idpic":null,"avatar":null,"status":"1","wx_openid":null,"unionid":null,"longitude":null,"latitude":null,"regtime":"1499931908","logintime":"1506775113","logintimes":"1506773187","tjid":null,"beizhu":null,"profession":null,"zhiyeid":0,"birthday":"631123200","location":"","cid":null,"idpics":null,"idpicss":null,"if_work":"2","qqopenid":null,"shequid":null,"renzhengtime":null,"shanghunicheng":null,"zhiyezhao":null,"shenheshijian":null,"tuijian":0,"jinyongshijian":null,"shanghujinyong":0,"money":"0.00","xinxianshishu":0,"xuanshangshu":0,"wendashu":0,"huodongshu":0,"farenwushu":0,"jierenwushu":0,"xiadanshu":"8","jiedanshu":0,"renwupinglunshu":0,"renwupingfen":5,"fuwupinglunshu":0,"fuwupingfen":5,"wanshanziliao":"2","jicika":0,"youhuiquan":0,"huiyuanka":"1","shoucangshanghu":"1"}
+         * user : {"id":"16449","phone":"13522665310","openid":"09f70a1bc8a4fee1c373a19b3e51fed1","name":"秦红兵","nickname":null,"sex":"1","idnumber":null,"idpic":null,"avatar":null,"status":"1","wx_openid":null,"unionid":null,"longitude":null,"latitude":null,"regtime":"1499931908","logStringime":"1506775113","logStringimes":"1506773187","tjid":null,"beizhu":null,"profession":null,"zhiyeid":0,"birthday":"631123200","location":"","cid":null,"idpics":null,"idpicss":null,"if_work":"2","qqopenid":null,"shequid":null,"renzhengtime":null,"shanghunicheng":null,"zhiyezhao":null,"shenheshijian":null,"tuijian":0,"jinyongshijian":null,"shanghujinyong":0,"money":"0.00","xinxianshishu":0,"xuanshangshu":0,"wendashu":0,"huodongshu":0,"farenwushu":0,"jierenwushu":0,"xiadanshu":"8","jiedanshu":0,"renwupinglunshu":0,"renwupingfen":5,"fuwupinglunshu":0,"`fuwupingfen":5,"wanshanziliao":"2","jicika":0,"youhuiquan":0,"huiyuanka":"1","shoucangshanghu":"1"}
          */
 
         private String id;
@@ -270,8 +270,8 @@ public class ShopCommentBean {
              * longitude : null
              * latitude : null
              * regtime : 1499931908
-             * logintime : 1506775113
-             * logintimes : 1506773187
+             * logStringime : 1506775113
+             * logStringimes : 1506773187
              * tjid : null
              * beizhu : null
              * profession : null
@@ -326,12 +326,12 @@ public class ShopCommentBean {
             private Object longitude;
             private Object latitude;
             private String regtime;
-            private String logintime;
-            private String logintimes;
+            private String logStringime;
+            private String logStringimes;
             private Object tjid;
             private Object beizhu;
             private Object profession;
-            private int zhiyeid;
+            private String zhiyeid;
             private String birthday;
             private String location;
             private Object cid;
@@ -344,25 +344,25 @@ public class ShopCommentBean {
             private Object shanghunicheng;
             private Object zhiyezhao;
             private Object shenheshijian;
-            private int tuijian;
+            private String tuijian;
             private Object jinyongshijian;
-            private int shanghujinyong;
+            private String shanghujinyong;
             private String money;
-            private int xinxianshishu;
-            private int xuanshangshu;
-            private int wendashu;
-            private int huodongshu;
-            private int farenwushu;
-            private int jierenwushu;
+            private String xinxianshishu;
+            private String xuanshangshu;
+            private String wendashu;
+            private String huodongshu;
+            private String farenwushu;
+            private String jierenwushu;
             private String xiadanshu;
-            private int jiedanshu;
-            private int renwupinglunshu;
-            private int renwupingfen;
-            private int fuwupinglunshu;
-            private int fuwupingfen;
+            private String jiedanshu;
+            private String renwupinglunshu;
+            private String renwupingfen;
+            private String fuwupinglunshu;
+            private String fuwupingfen;
             private String wanshanziliao;
-            private int jicika;
-            private int youhuiquan;
+            private String jicika;
+            private String youhuiquan;
             private String huiyuanka;
             private String shoucangshanghu;
 
@@ -486,20 +486,20 @@ public class ShopCommentBean {
                 this.regtime = regtime;
             }
 
-            public String getLogintime() {
-                return logintime;
+            public String getLogStringime() {
+                return logStringime;
             }
 
-            public void setLogintime(String logintime) {
-                this.logintime = logintime;
+            public void setLogStringime(String logStringime) {
+                this.logStringime = logStringime;
             }
 
-            public String getLogintimes() {
-                return logintimes;
+            public String getLogStringimes() {
+                return logStringimes;
             }
 
-            public void setLogintimes(String logintimes) {
-                this.logintimes = logintimes;
+            public void setLogStringimes(String logStringimes) {
+                this.logStringimes = logStringimes;
             }
 
             public Object getTjid() {
@@ -526,11 +526,11 @@ public class ShopCommentBean {
                 this.profession = profession;
             }
 
-            public int getZhiyeid() {
+            public String getZhiyeid() {
                 return zhiyeid;
             }
 
-            public void setZhiyeid(int zhiyeid) {
+            public void setZhiyeid(String zhiyeid) {
                 this.zhiyeid = zhiyeid;
             }
 
@@ -630,11 +630,11 @@ public class ShopCommentBean {
                 this.shenheshijian = shenheshijian;
             }
 
-            public int getTuijian() {
+            public String getTuijian() {
                 return tuijian;
             }
 
-            public void setTuijian(int tuijian) {
+            public void setTuijian(String tuijian) {
                 this.tuijian = tuijian;
             }
 
@@ -646,11 +646,11 @@ public class ShopCommentBean {
                 this.jinyongshijian = jinyongshijian;
             }
 
-            public int getShanghujinyong() {
+            public String getShanghujinyong() {
                 return shanghujinyong;
             }
 
-            public void setShanghujinyong(int shanghujinyong) {
+            public void setShanghujinyong(String shanghujinyong) {
                 this.shanghujinyong = shanghujinyong;
             }
 
@@ -662,51 +662,51 @@ public class ShopCommentBean {
                 this.money = money;
             }
 
-            public int getXinxianshishu() {
+            public String getXinxianshishu() {
                 return xinxianshishu;
             }
 
-            public void setXinxianshishu(int xinxianshishu) {
+            public void setXinxianshishu(String xinxianshishu) {
                 this.xinxianshishu = xinxianshishu;
             }
 
-            public int getXuanshangshu() {
+            public String getXuanshangshu() {
                 return xuanshangshu;
             }
 
-            public void setXuanshangshu(int xuanshangshu) {
+            public void setXuanshangshu(String xuanshangshu) {
                 this.xuanshangshu = xuanshangshu;
             }
 
-            public int getWendashu() {
+            public String getWendashu() {
                 return wendashu;
             }
 
-            public void setWendashu(int wendashu) {
+            public void setWendashu(String wendashu) {
                 this.wendashu = wendashu;
             }
 
-            public int getHuodongshu() {
+            public String getHuodongshu() {
                 return huodongshu;
             }
 
-            public void setHuodongshu(int huodongshu) {
+            public void setHuodongshu(String huodongshu) {
                 this.huodongshu = huodongshu;
             }
 
-            public int getFarenwushu() {
+            public String getFarenwushu() {
                 return farenwushu;
             }
 
-            public void setFarenwushu(int farenwushu) {
+            public void setFarenwushu(String farenwushu) {
                 this.farenwushu = farenwushu;
             }
 
-            public int getJierenwushu() {
+            public String getJierenwushu() {
                 return jierenwushu;
             }
 
-            public void setJierenwushu(int jierenwushu) {
+            public void setJierenwushu(String jierenwushu) {
                 this.jierenwushu = jierenwushu;
             }
 
@@ -718,43 +718,43 @@ public class ShopCommentBean {
                 this.xiadanshu = xiadanshu;
             }
 
-            public int getJiedanshu() {
+            public String getJiedanshu() {
                 return jiedanshu;
             }
 
-            public void setJiedanshu(int jiedanshu) {
+            public void setJiedanshu(String jiedanshu) {
                 this.jiedanshu = jiedanshu;
             }
 
-            public int getRenwupinglunshu() {
+            public String getRenwupinglunshu() {
                 return renwupinglunshu;
             }
 
-            public void setRenwupinglunshu(int renwupinglunshu) {
+            public void setRenwupinglunshu(String renwupinglunshu) {
                 this.renwupinglunshu = renwupinglunshu;
             }
 
-            public int getRenwupingfen() {
+            public String getRenwupingfen() {
                 return renwupingfen;
             }
 
-            public void setRenwupingfen(int renwupingfen) {
+            public void setRenwupingfen(String renwupingfen) {
                 this.renwupingfen = renwupingfen;
             }
 
-            public int getFuwupinglunshu() {
+            public String getFuwupinglunshu() {
                 return fuwupinglunshu;
             }
 
-            public void setFuwupinglunshu(int fuwupinglunshu) {
+            public void setFuwupinglunshu(String fuwupinglunshu) {
                 this.fuwupinglunshu = fuwupinglunshu;
             }
 
-            public int getFuwupingfen() {
+            public String getFuwupingfen() {
                 return fuwupingfen;
             }
 
-            public void setFuwupingfen(int fuwupingfen) {
+            public void setFuwupingfen(String fuwupingfen) {
                 this.fuwupingfen = fuwupingfen;
             }
 
@@ -766,19 +766,19 @@ public class ShopCommentBean {
                 this.wanshanziliao = wanshanziliao;
             }
 
-            public int getJicika() {
+            public String getJicika() {
                 return jicika;
             }
 
-            public void setJicika(int jicika) {
+            public void setJicika(String jicika) {
                 this.jicika = jicika;
             }
 
-            public int getYouhuiquan() {
+            public String getYouhuiquan() {
                 return youhuiquan;
             }
 
-            public void setYouhuiquan(int youhuiquan) {
+            public void setYouhuiquan(String youhuiquan) {
                 this.youhuiquan = youhuiquan;
             }
 
